@@ -1,36 +1,89 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import EventCard from "@/components/EventCard";
+import ImagePopup from "@/components/ImagePopUp";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useI18n } from "@/contexts/I18n/useI18n";
+import { useRole } from "@/contexts/Role/useRole";
+import { allEvents, eventDates } from "@/data/events";
 
-function App() {
-  const [count, setCount] = useState(0);
+const App = () => {
+  const { t } = useI18n();
+  const { value } = useRole();
+
+  const today = new Date();
+  const dayOfMonth = today.getDate();
+  const allowableDates = eventDates
+    .filter((eventDate) => eventDate.allowableRoles.includes(value))
+    .filter((eventDate) => {
+      const eventDay = parseInt(eventDate.date, 10);
+      return eventDay >= dayOfMonth;
+    });
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <LanguageSwitcher />
+      {!value && <div className="text-center text-5xl">{t("noPermission")}</div>}
+      {value && (
+        <>
+          {!!allowableDates.length && (
+            <>
+              <ImagePopup />
+              <div className="flex items-center flex-col gap-8 text-center px-4 pt-0 pb-6">
+                <div className="text-4xl">{t("welcome")}</div>
+                <div className="text-2xl">{t("description")}</div>
+                <Tabs defaultValue={allowableDates[0].date} className="w-full items-center">
+                  <TabsList className="gap-1">
+                    {allowableDates.map((eventDate) => (
+                      <TabsTrigger key={`${eventDate.date}-trigger`} value={eventDate.date}>
+                        {t(eventDate.date)}
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+                  {allowableDates.map((eventDate) => (
+                    <TabsContent key={`${eventDate.date}-content`} value={eventDate.date} className="w-full">
+                      <Card className="gap-2">
+                        <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {allEvents
+                            .filter((eventDay) => eventDay.date === eventDate.date)
+                            .flatMap((eventDay) => eventDay.events)
+                            .filter((event) => event.allowableRoles.includes(value))
+                            .map((event) => {
+                              return (
+                                <EventCard
+                                  title={t(event.title)}
+                                  locationName={t(event.locationName)}
+                                  location={event.location}
+                                  timeElement={
+                                    <>
+                                      <div>
+                                        {t("start")}: {event.start}
+                                      </div>
+                                      {event.entry && (
+                                        <div>
+                                          {t("entry")}: {event.entry}
+                                        </div>
+                                      )}
+                                    </>
+                                  }
+                                  wazeUrl={event.wazeUrl}
+                                  googleMapUrl={event.googleMapUrl}
+                                />
+                              );
+                            })}
+                        </CardContent>
+                      </Card>
+                    </TabsContent>
+                  ))}
+                </Tabs>
+              </div>
+            </>
+          )}
+          {!allowableDates.length && <div className="text-center text-5xl">{t("thankYou")}</div>}
+        </>
+      )}
     </>
   );
-}
+};
 
 export default App;

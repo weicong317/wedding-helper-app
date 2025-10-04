@@ -6,5 +6,9 @@
   "bracketSpacing": true,
   "arrowParens": "always",
   "endOfLine": "lf",
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": ["^react", "^react-dom", "<THIRD_PARTY_MODULES>", "^@/(.*)$", "^[./]", "^[./].*\\.css$"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }
