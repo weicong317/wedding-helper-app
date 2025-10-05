@@ -71,7 +71,7 @@ export const allEvents: Events[] = [
     events: [
       {
         title: ["weddingPreEvent"],
-        location: "2, Selasar Bendahara, TAMAN BENDAHARA, 31650 Ipoh, Perak (Ipoh MJ Boutique House)",
+        location: "2, Selasar Bendahara, Taman Bendahara, 31650 Ipoh, Perak (Ipoh MJ Boutique House)",
         start: "7.00pm (19:00)",
         wazeUrl: "https://waze.com/ul/hw2q2z5k40",
         googleMapUrl: "https://maps.app.goo.gl/Gm9ygoPBfWPEfLNy6",
