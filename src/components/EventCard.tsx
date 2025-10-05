@@ -7,7 +7,7 @@ import { useI18n } from "@/contexts/I18n/useI18n";
 
 type Props = {
   title: string;
-  locationName: string;
+  locationName?: string;
   location: string;
   timeElement: ReactElement;
   wazeUrl: string;

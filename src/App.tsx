@@ -51,8 +51,8 @@ const App = () => {
                             .map((event) => {
                               return (
                                 <EventCard
-                                  title={t(event.title)}
-                                  locationName={t(event.locationName)}
+                                  title={event.title.map(t).join("/")}
+                                  locationName={event.locationName ? t(event.locationName) : undefined}
                                   location={event.location}
                                   timeElement={
                                     <>

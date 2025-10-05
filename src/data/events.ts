@@ -1,6 +1,7 @@
+import type { EventDates, Events } from "./eventsEntities";
 import { roleMapping } from "./roles";
 
-export const eventDates = [
+export const eventDates: EventDates[] = [
   { date: "18Oct", allowableRoles: [roleMapping.colleagues, roleMapping.relativesKuchingIpoh, roleMapping.admin] },
   { date: "19Oct", allowableRoles: [roleMapping.colleagues, roleMapping.relativesKuchingIpoh, roleMapping.admin] },
   {
@@ -25,12 +26,12 @@ export const eventDates = [
     ],
   },
 ];
-export const allEvents = [
+export const allEvents: Events[] = [
   {
     date: "18Oct",
     events: [
       {
-        title: "dinner",
+        title: ["dinner"],
         locationName: "topspot",
         location: "off, Jln Padungan, 93100 Kuching, Sarawak (Topspot Food Court/Bangunan UTC Kuching)",
         start: "7.00pm (19:00)",
@@ -44,7 +45,7 @@ export const allEvents = [
     date: "19Oct",
     events: [
       {
-        title: "weddingTraditionalCeremony",
+        title: ["lunch"],
         locationName: "brideHome",
         location: "17, Jalan Kampung Sungai Apong Baru, Sungai Apong, 93450 Kuching, Sarawak",
         start: "8.00am (08:00)",
@@ -54,7 +55,7 @@ export const allEvents = [
         allowableRoles: [roleMapping.colleagues, roleMapping.relativesKuchingIpoh, roleMapping.admin],
       },
       {
-        title: "weddingDinner",
+        title: ["weddingDinner"],
         locationName: "shangrila",
         location: "Rooftop City One Megamall, 93350 Kuching, Sarawak (Seafood Shangri-la City One)",
         start: "7.00pm (19:00)",
@@ -69,8 +70,7 @@ export const allEvents = [
     date: "24Oct",
     events: [
       {
-        title: "weddingPreEvent",
-        locationName: "brideHome",
+        title: ["weddingPreEvent"],
         location: "2, Selasar Bendahara, TAMAN BENDAHARA, 31650 Ipoh, Perak (Ipoh MJ Boutique House)",
         start: "7.00pm (19:00)",
         wazeUrl: "https://waze.com/ul/hw2q2z5k40",
@@ -90,7 +90,7 @@ export const allEvents = [
     date: "25Oct",
     events: [
       {
-        title: "wedding",
+        title: ["wedding"],
         locationName: "brideHome",
         location: "2, Selasar Bendahara, Taman Bendahara, 31650 Ipoh, Perak (Ipoh MJ Boutique House)",
         start: "8.00am (08:00)",
@@ -105,7 +105,7 @@ export const allEvents = [
         ],
       },
       {
-        title: "weddingTraditionalCeremony",
+        title: ["weddingTraditionalCeremony", "lunch"],
         locationName: "groomHome",
         location: "14, Lintasan Kledang Timur 4, Bandar Baru, Menglembu, 31450 Ipoh, Perak",
         start: "11.00am (11:00)",
@@ -120,7 +120,7 @@ export const allEvents = [
         ],
       },
       {
-        title: "weddingDinner",
+        title: ["weddingDinner"],
         locationName: "yukSouHin",
         location: "292, Jalan Sultan Idris Shah, 30000 Ipoh, Perak (Weil Hotel)",
         start: "7.00pm (19:00)",
