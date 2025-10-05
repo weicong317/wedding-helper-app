@@ -45,10 +45,10 @@ export const allEvents: Events[] = [
     date: "19Oct",
     events: [
       {
-        title: ["lunch"],
+        title: ["breakfast", "lunch"],
         locationName: "brideHome",
         location: "17, Jalan Kampung Sungai Apong Baru, Sungai Apong, 93450 Kuching, Sarawak",
-        start: "8.00am (08:00)",
+        start: "9.00am (09:00)",
         wazeUrl:
           "https://ul.waze.com/ul?place=ChIJi56q-FGm-zERolBSN3RXthA&ll=1.54353770%2C110.38452510&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location",
         googleMapUrl: "https://maps.app.goo.gl/LBcDxZgfiRYnSnfU9",
