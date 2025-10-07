@@ -93,7 +93,7 @@ export const allEvents: Events[] = [
         title: ["wedding"],
         locationName: "brideHome",
         location: "2, Selasar Bendahara, Taman Bendahara, 31650 Ipoh, Perak (Ipoh MJ Boutique House)",
-        start: "8.00am (08:00)",
+        start: "9.00am (09:00)",
         wazeUrl: "https://waze.com/ul/hw2q2z5k40",
         googleMapUrl: "https://maps.app.goo.gl/Gm9ygoPBfWPEfLNy6",
         allowableRoles: [

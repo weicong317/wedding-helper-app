@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import firstInvitationCardImg from "@/assets/19th-invitation-card.png";
+import firstInvitationCardImg from "@/assets/19th-invitation-card.jpeg";
 import specialInvitationCardImg from "@/assets/24th-invitation-card.png";
 import secondInvitationCardImg from "@/assets/25th-invitation-card.png";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
