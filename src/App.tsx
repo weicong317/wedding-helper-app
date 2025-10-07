@@ -1,11 +1,13 @@
 import EventCard from "@/components/EventCard";
 import ImagePopup from "@/components/ImagePopUp";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import StayCard from "@/components/StayCard";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useI18n } from "@/contexts/I18n/useI18n";
 import { useRole } from "@/contexts/Role/useRole";
 import { allEvents, eventDates } from "@/data/events";
+import { allHomestays } from "@/data/homestays";
 
 const App = () => {
   const { t } = useI18n();
@@ -44,6 +46,23 @@ const App = () => {
                     <TabsContent key={`${eventDate.date}-content`} value={eventDate.date} className="w-full">
                       <Card className="gap-2">
                         <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {allHomestays
+                            .filter((homestay) => homestay.date === eventDate.date)
+                            .flatMap((homestay) => homestay.homestays)
+                            .filter((homestay) => homestay.allowableRoles.includes(value))
+                            .map((homestay) => {
+                              return (
+                                <StayCard
+                                  locationName={homestay.locationName ? t(homestay.locationName) : undefined}
+                                  location={homestay.location}
+                                  checkInDT={homestay.checkInDT}
+                                  checkOutDT={homestay.checkOutDT}
+                                  wazeUrl={homestay.wazeUrl}
+                                  googleMapUrl={homestay.googleMapUrl}
+                                  detailUrl={homestay.detailUrl}
+                                />
+                              );
+                            })}
                           {allEvents
                             .filter((eventDay) => eventDay.date === eventDate.date)
                             .flatMap((eventDay) => eventDay.events)
