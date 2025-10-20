@@ -138,6 +138,7 @@ export const allEvents: Events[] = [
           roleMapping.admin,
           roleMapping.brother,
           roleMapping.sister,
+          roleMapping.onlyWeddingDinner,
         ],
       },
     ],
