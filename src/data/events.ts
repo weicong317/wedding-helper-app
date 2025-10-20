@@ -23,6 +23,7 @@ export const eventDates: EventDates[] = [
       roleMapping.admin,
       roleMapping.brother,
       roleMapping.sister,
+      roleMapping.onlyWeddingDinner,
     ],
   },
 ];

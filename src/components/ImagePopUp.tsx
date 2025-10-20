@@ -8,7 +8,12 @@ import { useRole } from "@/contexts/Role/useRole";
 import { roleMapping } from "@/data/roles";
 
 const rolesWithFirst = new Set([roleMapping.colleagues]);
-const rolesWithSecond = new Set([roleMapping.relativesIpoh, roleMapping.brother, roleMapping.sister]);
+const rolesWithSecond = new Set([
+  roleMapping.relativesIpoh,
+  roleMapping.brother,
+  roleMapping.sister,
+  roleMapping.onlyWeddingDinner,
+]);
 const rolesWithSpecial = new Set([roleMapping.noWeddingDinner]);
 
 const ImagePopup = () => {
