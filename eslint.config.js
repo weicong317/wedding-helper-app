@@ -7,7 +7,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default defineConfig([
-  globalIgnores(["dist"]),
+  globalIgnores(["dist", "*.json"]),
 
   {
     files: ["**/*.{ts,tsx}"],
@@ -27,6 +27,7 @@ export default defineConfig([
     rules: {
       ...reactHooksPlugin.configs.recommended.rules,
       ...reactRefreshPlugin.configs.vite.rules,
+      "react-refresh/only-export-components": "off",
     },
   },
 ]);
